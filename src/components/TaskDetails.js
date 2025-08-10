@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
-import {taskStore} from "../store";
+import { taskStore } from "../store";
 import React from 'react';
 
 export const TaskDetails = observer(({ task }) => {
@@ -15,23 +15,24 @@ export const TaskDetails = observer(({ task }) => {
 
     return (
         <div className="task-details">
-            <h2>{task.title}</h2>
+            <h2 className="task-details-title">{task.title}</h2>
 
             {isEditing ? (
                 <form onSubmit={handleEditSubmit} className="description-edit-form">
-          <textarea
-              value={editDescription}
-              onChange={(e) => setEditDescription(e.target.value)}
-              className="description-edit-input"
-          />
+                    <textarea
+                        value={editDescription}
+                        onChange={(e) => setEditDescription(e.target.value)}
+                        className="description-edit-input"
+                        autoFocus
+                    />
                     <div className="description-edit-actions">
-                        <button type="submit" className="save-btn">
+                        <button type="submit" className="btn save-btn">
                             Сохранить
                         </button>
                         <button
                             type="button"
                             onClick={() => setIsEditing(false)}
-                            className="cancel-btn"
+                            className="btn cancel-btn"
                         >
                             Отмена
                         </button>
@@ -39,10 +40,10 @@ export const TaskDetails = observer(({ task }) => {
                 </form>
             ) : (
                 <div className="description-view">
-                    <p>{task.description || "Нет описания"}</p>
+                    <p className="description-text">{task.description || "Нет описания"}</p>
                     <button
                         onClick={() => setIsEditing(true)}
-                        className="edit-btn"
+                        className="btn edit-btn"
                     >
                         Редактировать описание
                     </button>
