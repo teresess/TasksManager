@@ -8,36 +8,36 @@ export const ThemeToggle = observer(() => {
     return (
         <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
-                <button className="theme-toggle">
+                <button className="theme-toggle" aria-label="Сменить тему">
                     {taskStore.theme === "light" ? (
-                        <SunIcon />
+                        <SunIcon size={20} />
                     ) : taskStore.theme === "dark" ? (
-                        <MoonIcon />
+                        <MoonIcon size={20} />
                     ) : (
-                        <DesktopIcon />
+                        <DesktopIcon size={20} />
                     )}
                 </button>
             </DropdownMenu.Trigger>
 
             <DropdownMenu.Portal>
-                <DropdownMenu.Content className="dropdown-content">
+                <DropdownMenu.Content className="dropdown-content" sideOffset={5}>
                     <DropdownMenu.Item
                         className="dropdown-item"
                         onClick={() => taskStore.setTheme("light")}
                     >
-                        <SunIcon /> Светлая
+                        <SunIcon size={16} /> Светлая
                     </DropdownMenu.Item>
                     <DropdownMenu.Item
                         className="dropdown-item"
                         onClick={() => taskStore.setTheme("dark")}
                     >
-                        <MoonIcon /> Темная
+                        <MoonIcon size={16} /> Темная
                     </DropdownMenu.Item>
                     <DropdownMenu.Item
                         className="dropdown-item"
                         onClick={() => taskStore.setTheme("system")}
                     >
-                        <DesktopIcon /> Системная
+                        <DesktopIcon size={16} /> Системная
                     </DropdownMenu.Item>
                 </DropdownMenu.Content>
             </DropdownMenu.Portal>
